@@ -1,0 +1,1 @@
+export const Mensaje = ({value,label}) => <p>{label} {value}</p>

@@ -1,0 +1,1 @@
+export const Total = ({ texto, suma }) =>  <p>{ texto } { suma }</p>
