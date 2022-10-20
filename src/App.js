@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React ,{ useMemo } from 'react'
+import { Mensaje , Header, Total } from './components/index'
+import { topics } from './utils/data'
 
-function App() {
+const App = () => {
+
+  const numArr =  useMemo(() => topics?.map((item)=>item?.value), []); // generar un nuevo arreglo como tu quieras 
+// const numArrFil =  topics?.filter((item)=> item?.value < 10) // generar un nuevo arreglo como tu quieras 
+// console.log(numArrFil);
+const suma = useMemo(() => numArr.reduce((a,b)=>a+b), [numArr]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header course='Half Stack application development' />
+      {topics.map((cadaItem,i)=> <Mensaje key={i} label={cadaItem.title} value={cadaItem.value} />)}
+      <Total texto='Esta es la suma: ' suma={suma} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
